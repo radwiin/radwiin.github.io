@@ -10,3 +10,18 @@ body {
 	height: 100%;
   position: absolute;
 }
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+  display: block
+}
+
+::-webkit-scrollbar-thumb {
+  background: #e4eaf5;
+  border-radius: 5px
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #c4c9d3
+}

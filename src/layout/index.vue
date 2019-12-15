@@ -65,6 +65,7 @@ export default {
 
   .container {
     flex-grow: 1;
+    min-height: 0px;
   }
 }
 </style>
