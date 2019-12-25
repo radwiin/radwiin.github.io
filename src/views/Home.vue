@@ -1,93 +1,46 @@
 <template>
-  <div class="app-container">
-    <div class="left">
-      <vs-list>
-        <vs-list-header
-          icon="supervisor_account"
-          title="Group 1"
-        ></vs-list-header>
-        <vs-list-item
-          icon="check"
-          title="Snickerdoodle"
-          subtitle="An excellent companion"
-        ></vs-list-item>
-        <vs-list-item
-          icon="check"
-          title="Sapporo Haru"
-          subtitle="An excellent polish restaurant, quick delivery and hearty, filling meals"
-        ></vs-list-item>
-        <vs-list-header
-          icon="how_to_reg"
-          title="Group 2"
-          color="success"
-        ></vs-list-header>
-        <vs-list-item
-          icon="verified_user"
-          title="Enid's"
-          subtitle="At night a bar, during the day a delicious brunch spot."
-        ></vs-list-item>
-        <vs-list-item
-          icon="verified_user"
-          title="Veronika Ossi"
-          subtitle="Has not watched anything recently"
-        ></vs-list-item>
-        <vs-list-header
-          icon="how_to_reg"
-          title="Group 2"
-          color="success"
-        ></vs-list-header>
-        <vs-list-item
-          icon="verified_user"
-          title="Enid's"
-          subtitle="At night a bar, during the day a delicious brunch spot."
-        ></vs-list-item>
-        <vs-list-item
-          icon="verified_user"
-          title="Veronika Ossi"
-          subtitle="Has not watched anything recently"
-        ></vs-list-item>
-        <vs-list-header
-          icon="how_to_reg"
-          title="Group 2"
-          color="success"
-        ></vs-list-header>
-        <vs-list-item
-          icon="verified_user"
-          title="Enid's"
-          subtitle="At night a bar, during the day a delicious brunch spot."
-        ></vs-list-item>
-        <vs-list-item
-          icon="verified_user"
-          title="Veronika Ossi"
-          subtitle="Has not watched anything recently"
-        ></vs-list-item>
-      </vs-list>
-    </div>
-    <div class="right"></div>
+  <div class="container" :class="{ loaded }" :style="backgroundStyle">
+    <clock />
   </div>
 </template>
 
 <script>
+import Clock from "@/components/Clock";
 export default {
   name: "home",
-  components: {}
+  components: { Clock },
+  data: () => ({
+    loaded: false,
+    backgroundStyle: {}
+  }),
+  created() {
+    let img, src;
+    src = require("@/assets/54.jpg");
+    img = new Image();
+    img.addEventListener("load", () => {
+      this.loaded = true;
+      this.backgroundStyle = {
+        "background-image": `url(${src})`
+      };
+    });
+    img.src = src;
+  }
 };
 </script>
 
 <style lang="scss" scoped>
-.app-container {
+.container {
   height: 100%;
   display: flex;
-  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  background-position: center center;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
 
-  .left {
-    flex-shrink: 0;
-    width: 300px;
-    overflow-y: auto;
-  }
-
-  .right {
-    flex-grow: 1;
-  }
+.loaded {
+  opacity: 1;
 }
 </style>
