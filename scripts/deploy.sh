@@ -18,7 +18,7 @@ git add -A
 git commit -m 'deploy - pages'
 
 # if you are deploying to https://<USERNAME>.github.io
-git push -f https://github.com/lusaxweb/lusaxweb.github.io.git master
+git push -f https://github.com/radwiin/radwiin.github.io.git master
 
 # if you are deploying to https://<USERNAME>.github.io/<REPO>
 # git push -f git@github.com:lusaxweb/vuesax-blog.git master:gh-pages
