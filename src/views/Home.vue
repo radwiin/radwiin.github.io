@@ -15,7 +15,7 @@ export default {
   }),
   created() {
     let img, src;
-    src = require("@/assets/54.jpg");
+    src = require(`@/assets/${this.pick()}.jpg`);
     img = new Image();
     img.addEventListener("load", () => {
       this.loaded = true;
@@ -24,6 +24,14 @@ export default {
       };
     });
     img.src = src;
+  },
+  methods: {
+    pick() {
+      const requireContext = require.context("@/assets", false);
+      const imgKeys = requireContext.keys();
+      const picked = Math.ceil(Math.random() * imgKeys.length);
+      return picked;
+    }
   }
 };
 </script>
